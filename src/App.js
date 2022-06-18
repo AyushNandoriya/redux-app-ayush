@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import StudentData from './components/StudentData';
+import Users from './features/Users/Users';
 
 function App() {
   
   return (
     <div>
-      <StudentData />
+      <Users />
     </div>
   );
 }
