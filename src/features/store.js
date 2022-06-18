@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import reducer from '../features/reducer';
+import reducer from './reducer';
 
 let INITIAL_STATE = [
         {
