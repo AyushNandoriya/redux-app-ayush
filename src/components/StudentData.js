@@ -71,12 +71,6 @@ const StudentData = () => {
     setDescription("");
   };
 
-  const deleteAllRows = () => {
-    for (let i = 0; i < items.length; i++) {
-      items.slice(items[i]);
-    }
-  }
-
   const DeleteRow = (id) => {
     dispatch(remove(id));
   };
@@ -89,7 +83,7 @@ const StudentData = () => {
           <Button variant="contained" className="mx-2" onClick={() => setShow(true)}>
             Add
           </Button>
-          <Button variant="contained" className="bg-danger" onClick={deleteAllRows}>Delete</Button>
+          <Button variant="contained" className="bg-danger">Delete</Button>
         </div>
       </div>
       {show ? (
