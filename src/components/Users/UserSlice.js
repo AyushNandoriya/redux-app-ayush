@@ -33,17 +33,18 @@ export const UserSlice = createSlice({
       state.users.push(action.payload);
     },
 
-    // user was not delete.
     deleteUsers: (state, action) => {
-      console.log(action.payload);
-        state.users.filter(item => item.id !== action.payload);
-        console.log(state.users);
+      state.users = state.users.filter(items => items.id !== action.payload)
+    },
+
+    deleteAllUsers: (state, action) => {
+      state.users.length = action.payload;
     },
   },
 
 });
 
-export const { addUsers, deleteUsers } = UserSlice.actions;
+export const { addUsers, deleteUsers, deleteAllUsers } = UserSlice.actions;
 
 export default UserSlice.reducer;
 
