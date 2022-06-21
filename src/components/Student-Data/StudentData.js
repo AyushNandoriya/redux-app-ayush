@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './StudentData.css';
+import "./StudentData.css";
 import { useSelector, useDispatch } from "react-redux";
 import { DataGrid } from "@mui/x-data-grid";
 import { ButtonGroup, Button } from "@mui/material";
@@ -21,22 +21,22 @@ const StudentData = () => {
         return (
           <ButtonGroup>
             <Button
-            className="rounded"
-            variant="contained"
-            onClick={() => editRow(items.row)}
-          >
-            Edit
-          </Button>
-          <Button
-          className="mx-2 rounded"
-            variant="contained"
-            color="error"
-            onClick={() => {
-              DeleteRow(items.id);
-            }}
-          >
-            Delete
-          </Button>
+              className="rounded"
+              variant="contained"
+              onClick={() => editRow(items.row)}
+            >
+              Edit
+            </Button>
+            <Button
+              className="mx-2 rounded"
+              variant="contained"
+              color="error"
+              onClick={() => {
+                DeleteRow(items.id);
+              }}
+            >
+              Delete
+            </Button>
           </ButtonGroup>
         );
       },
@@ -51,11 +51,11 @@ const StudentData = () => {
     },
   });
 
-  const editRow =(row) => {
+  const editRow = (row) => {
     setShow(true);
     setName(row.name);
     setDescription(row.description);
-  }
+  };
 
   const remove = (id) => ({
     type: "removeItem",
@@ -80,10 +80,16 @@ const StudentData = () => {
       <div className="d-flex bg-warning justify-content-between text-white p-2 mb-3">
         <h1>Student Information</h1>
         <div className="pt-2">
-          <Button variant="contained" className="mx-2" onClick={() => setShow(true)}>
+          <Button
+            variant="contained"
+            className="mx-2"
+            onClick={() => setShow(true)}
+          >
             Add
           </Button>
-          <Button variant="contained" className="bg-danger">Delete</Button>
+          <Button variant="contained" className="bg-danger">
+            Delete
+          </Button>
         </div>
       </div>
       {show ? (
@@ -122,8 +128,9 @@ const StudentData = () => {
         </div>
       ) : null}
 
-      <div style={{ height: "400px" }}>
-        <DataGrid rows={items} columns={columns} checkboxSelection />
+      <div style={{ height: "400px" }} className="mx-3">
+        <DataGrid rows={items} columns={columns} checkboxSelection 
+        style={{border: "3px solid grey", borderRadius: "30px"}}/>
       </div>
     </div>
   );

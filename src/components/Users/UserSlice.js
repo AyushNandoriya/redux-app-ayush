@@ -38,7 +38,7 @@ export const UserSlice = createSlice({
     },
 
     deleteAllUsers: (state, action) => {
-      state.users.length = action.payload;
+      state.users = state.users.filter(row => !action.payload.includes(row.id));
     },
   },
 

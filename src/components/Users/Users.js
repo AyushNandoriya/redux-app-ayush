@@ -1,17 +1,19 @@
 import React, { useState } from "react";
+import './Users.css';
 import { useSelector, useDispatch } from "react-redux";
 import { addUsers, deleteUsers, userData, deleteAllUsers } from "./UserSlice";
 import CloseIcon from "@mui/icons-material/Close";
 import { ButtonGroup, Button } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 
-export default function Counter() {
+export default function Users() {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [show, setShow] = useState(false);
   const users = useSelector(userData);
   const dispatch = useDispatch();
+  const [selectedRows, setSelectedRows] = useState([]);
   const columns = [
     { field: "id", headerName: "ID", width: "100" },
     { field: "name", headerName: "USER NAME", width: "200" },
@@ -58,12 +60,12 @@ export default function Counter() {
   };
 
   const deleteUser = (id) => {
-    console.log(id);
     dispatch(deleteUsers(id));
   };
 
-  const deleteAll = () => {
-    dispatch(deleteAllUsers(0));
+  const deleteSelectedUser = () => {
+    console.log(selectedRows);
+    dispatch(deleteAllUsers(selectedRows));
   }
 
   return (
@@ -78,7 +80,7 @@ export default function Counter() {
           >
             Add
           </Button>
-          <Button variant="contained" className="bg-danger" onClick={deleteAll}>
+          <Button variant="contained" className="bg-danger" onClick={deleteSelectedUser}>
             Delete
           </Button>
         </div>
@@ -131,7 +133,8 @@ export default function Counter() {
           columns={columns}
           checkboxSelection
           className="px-2"
-          style={{ border: "3px solid gray" }}
+          style={{ border: "3px solid gray", borderRadius: "30px" }}
+          onSelectionModelChange={(id) => setSelectedRows(id)} 
         />
       </div>
     </div>
