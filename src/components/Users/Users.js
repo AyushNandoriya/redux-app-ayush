@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Users.css';
 import { useSelector, useDispatch } from "react-redux";
 import { addUsers, deleteUsers, userData, deleteAllUsers } from "./UserSlice";
@@ -45,6 +45,10 @@ export default function Users() {
       width: "200",
     },
   ];
+
+  useEffect(() => {
+    dispatch(addUsers({id:'01',name:'ayuah',password:'123456'}))
+  }, [])
 
   const addEmployee = (e) => {
     e.preventDefault();
